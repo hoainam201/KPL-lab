@@ -1,7 +1,7 @@
 /* Scanner
  * @copyright (c) 2008, Hedspi, Hanoi University of Technology
  * @author Huu-Duc Nguyen
- * @version 1.0 aaaaaaaaaaaa
+ * @version 1.0
  */
 
 #include <stdio.h>
@@ -14,7 +14,7 @@
 #include <ctype.h>
 #include <string.h>
 
-#define MAX_SIZE 1000
+#define MAX_SIZE 20
 
 extern int lineNo;
 extern int colNo;
@@ -25,21 +25,22 @@ extern CharCode charCodes[];
 /***************************************************************/
 
 void skipBlank() {
-    //while (charCodes[readChar()] == CHAR_SPACE);
     readChar();
 }
 
 void skipComment() {
     while (1) {
-        if (currentChar == '*') {
+        if (charCodes[currentChar] == CHAR_TIMES) {
             readChar();
-            if (currentChar == ')') {
+            if (charCodes[currentChar] == CHAR_RPAR) {
                 readChar();
                 readChar();
                 return;
             }
         }
         readChar();
+        if (currentChar == EOF)
+            error(ERR_ENDOFCOMMENT, lineNo, colNo);
     }
 }
 
@@ -51,12 +52,10 @@ Token *readIdentKeyword(void) {
     while (isalnum(currentChar)) {
         if (count >= MAX_SIZE)
             error(ERR_IDENTTOOLONG, ln, beginWord);
-        word[count] = (char) currentChar;
-        count++;
+        word[count++] = (char) currentChar;
         readChar();
     }
-    Token *token = makeToken(checkKeyword(word) == TK_NONE ? TK_IDENT : checkKeyword(word), ln,
-                             beginWord);
+    Token *token = makeToken(checkKeyword(word) == TK_NONE ? TK_IDENT : checkKeyword(word), ln, beginWord);
     strcpy(token->string, word);
     return token;
 }
@@ -74,21 +73,15 @@ Token *readNumber(void) {
 }
 
 Token *readConstChar(void) {
-    char word[MAX_SIZE] = "";
-    int count = 0;
-    int beginWord = colNo;
-    int ln = lineNo;
+    int ln = lineNo, cn = colNo;
+    Token *token = makeToken(TK_CHAR, lineNo, colNo);
     readChar();
-    while (charCodes[currentChar] != CHAR_SINGLEQUOTE) {
-        if (count >= MAX_SIZE)
-            error(ERR_IDENTTOOLONG, ln, beginWord);
-        word[count] = (char) currentChar;
-        count++;
-        readChar();
+    sprintf(token->string, "%c", currentChar);
+    readChar();
+    if (charCodes[currentChar] != CHAR_SINGLEQUOTE) {
+        error(ERR_INVALIDCHARCONSTANT, ln, cn);
     }
-    Token *token = makeToken(TK_CHAR, ln, beginWord);
     readChar();
-    strcpy(token->string, word);
     return token;
 }
 
@@ -108,11 +101,11 @@ Token *getToken(void) {
         case CHAR_DIGIT:
             return readNumber();
         case CHAR_PLUS:
-            token = makeToken(SB_PLUS, lineNo, colNo);
+            token = makeToken(SB_PLUS, ln, cn);
             readChar();
             return token;
         case CHAR_SEMICOLON:
-            token = makeToken(SB_SEMICOLON, lineNo, colNo);
+            token = makeToken(SB_SEMICOLON, ln, cn);
             readChar();
             return token;
         case CHAR_LPAR:
@@ -124,12 +117,12 @@ Token *getToken(void) {
                 readChar();
                 return token;
             } else {
-                token = makeToken(SB_LPAR, lineNo, colNo);
+                token = makeToken(SB_LPAR, ln, cn);
                 return token;
             }
             return getToken();
         case CHAR_RPAR:
-            token = makeToken(SB_RPAR, lineNo, colNo);
+            token = makeToken(SB_RPAR, ln, cn);
             readChar();
             return token;
         case CHAR_COLON:
@@ -147,7 +140,7 @@ Token *getToken(void) {
                 readChar();
                 return token;
             } else
-                return makeToken(SB_PERIOD, lineNo, colNo);
+                return makeToken(SB_PERIOD, ln, cn);
         case CHAR_EQ:
             token = makeToken(SB_EQ, lineNo, colNo);
             readChar();
@@ -167,7 +160,7 @@ Token *getToken(void) {
                 readChar();
                 return token;
             } else
-                error(ERR_INVALIDSYMBOL, lineNo, colNo);
+                error(ERR_INVALIDSYMBOL, ln, cn);
         case CHAR_COMMA:
             token = makeToken(SB_COMMA, lineNo, colNo);
             readChar();
