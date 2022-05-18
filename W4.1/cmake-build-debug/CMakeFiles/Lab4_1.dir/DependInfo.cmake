@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "D:/CTD/KPL-lab/Lab4.1/debug.c" "D:/CTD/KPL-lab/Lab4.1/cmake-build-debug/CMakeFiles/Lab4_1.dir/debug.c.obj"
-  "D:/CTD/KPL-lab/Lab4.1/main.c" "D:/CTD/KPL-lab/Lab4.1/cmake-build-debug/CMakeFiles/Lab4_1.dir/main.c.obj"
-  "D:/CTD/KPL-lab/Lab4.1/symtab.c" "D:/CTD/KPL-lab/Lab4.1/cmake-build-debug/CMakeFiles/Lab4_1.dir/symtab.c.obj"
+  "D:/CTD/KPL-lab/W4.1/debug.c" "D:/CTD/KPL-lab/W4.1/cmake-build-debug/CMakeFiles/Lab4_1.dir/debug.c.obj"
+  "D:/CTD/KPL-lab/W4.1/main.c" "D:/CTD/KPL-lab/W4.1/cmake-build-debug/CMakeFiles/Lab4_1.dir/main.c.obj"
+  "D:/CTD/KPL-lab/W4.1/symtab.c" "D:/CTD/KPL-lab/W4.1/cmake-build-debug/CMakeFiles/Lab4_1.dir/symtab.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

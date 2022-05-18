@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/CTD/KPL-lab/W4.2/charcode.h
+
+D:/CTD/KPL-lab/W4.2/error.h
+token.h
+D:/CTD/KPL-lab/W4.2/token.h
+
+D:/CTD/KPL-lab/W4.2/reader.h
+
+D:/CTD/KPL-lab/W4.2/scanner.c
+stdio.h
+-
+stdlib.h
+-
+ctype.h
+-
+reader.h
+D:/CTD/KPL-lab/W4.2/reader.h
+charcode.h
+D:/CTD/KPL-lab/W4.2/charcode.h
+token.h
+D:/CTD/KPL-lab/W4.2/token.h
+error.h
+D:/CTD/KPL-lab/W4.2/error.h
+scanner.h
+D:/CTD/KPL-lab/W4.2/scanner.h
+
+D:/CTD/KPL-lab/W4.2/scanner.h
+token.h
+D:/CTD/KPL-lab/W4.2/token.h
+
+D:/CTD/KPL-lab/W4.2/token.h
+

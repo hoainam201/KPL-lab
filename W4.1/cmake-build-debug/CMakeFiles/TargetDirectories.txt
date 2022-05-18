@@ -1,3 +1,3 @@
-D:/CTD/KPL-lab/Lab4.1/cmake-build-debug/CMakeFiles/Lab4_1.dir
-D:/CTD/KPL-lab/Lab4.1/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/CTD/KPL-lab/Lab4.1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/CTD/KPL-lab/W4.1/cmake-build-debug/CMakeFiles/Lab4_1.dir
+D:/CTD/KPL-lab/W4.1/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/CTD/KPL-lab/W4.1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
