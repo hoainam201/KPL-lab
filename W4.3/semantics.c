@@ -12,6 +12,8 @@
 extern SymTab *symtab;
 extern Token *currentToken;
 
+static int on_search = 0;
+
 Object *lookupObject(char *name) {
     Object *object = NULL;
     static Scope *currentScope = NULL;
